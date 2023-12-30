@@ -1,6 +1,7 @@
 import { createApp } from "vue";
 import App from "./App.vue";
 import { createRouter, createWebHistory } from "vue-router";
+import "@/styles/reset.css";
 
 import Main from "@/pages/Main.vue";
 import Signin from "@/pages/Signin.vue";
