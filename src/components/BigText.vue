@@ -1,5 +1,5 @@
 <template>
-  <small class="small-text">{{ props.text }}</small>
+  <h3 class="big-text">{{ props.text }}</h3>
 </template>
 
 <script setup>
@@ -8,8 +8,8 @@ const props = defineProps(['text']);
 </script>
 
 <style scoped>
-.small-text{
-  font-size:15px;
-  color:darkgray;
+.big-text {
+  font-size: 25px;
+  font-weight: 600;
 }
 </style>

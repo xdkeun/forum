@@ -18,7 +18,7 @@ const props = defineProps(['type', 'icon', 'placeholder']);
   width: 300px;
   height: 50px;
   border: 0.5px solid #111111;
-  border-radius:5px;
+  border-radius: 5px;
   padding: 0 10px;
   font-size: 18px;
 }
