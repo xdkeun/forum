@@ -37,6 +37,10 @@ header {
   color: black;
 }
 
+.profile:hover {
+  background: rgba(0, 0, 0, 0.1);
+}
+
 .profile-image {
   width: 30px;
   height: 30px;
