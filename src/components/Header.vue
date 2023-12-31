@@ -1,5 +1,5 @@
 <template>
-  <header>
+  <header class="header">
     <router-link to="/"><img src="@/assets/images/logo.png" alt="포럼 로고" class="logo"></router-link>
     <router-link to="/login" class="profile">
       <img src="@/assets/images/user.png" alt="프로필 사진" class="profile-image">
@@ -9,7 +9,7 @@
 </template>
 
 <style scoped>
-header {
+.header {
   display: flex;
   justify-content: space-between;
   align-items: center;
