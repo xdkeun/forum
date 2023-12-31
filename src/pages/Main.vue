@@ -8,6 +8,7 @@
   <div class="search-wrapper">
     <Search />
   </div>
+  <PostList/>
 </template>
 
 <script setup>
@@ -16,6 +17,7 @@ import Categories from '@/constants/categories'
 import Search from '@/components/Search.vue';
 import SmallText from '@/components/SmallText.vue';
 import Sorts from "@/constants/sorts"
+import PostList from "@/components/PostList.vue"
 import { ref } from 'vue';
 
 const categories = ref(Categories);
