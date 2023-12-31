@@ -2,6 +2,9 @@
   <nav class="nav">
     <Category v-for="(category, index) in categories" :key="index" :text="category" class="category" />
   </nav>
+  <div class="sort-wrapper">
+    <SmallText v-for="(sort, index) in sorts" :key="index" :text="sort" class="sort" />
+  </div>
   <div class="search-wrapper">
     <Search />
   </div>
@@ -9,10 +12,14 @@
 
 <script setup>
 import Category from '@/components/Category.vue';
+import Categories from '@/constants/categories'
 import Search from '@/components/Search.vue';
+import SmallText from '@/components/SmallText.vue';
+import Sorts from "@/constants/sorts"
 import { ref } from 'vue';
 
-const categories = ref(["전체", "카테고리1", "카테고리2", "카테고리3", "카테고리4"]);
+const categories = ref(Categories);
+const sorts = ref(Sorts);
 
 </script>
 
@@ -34,5 +41,13 @@ const categories = ref(["전체", "카테고리1", "카테고리2", "카테고�
   margin: 5px 10px;
   display: flex;
   justify-content: flex-end;
+}
+
+.sort-wrapper {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  cursor: pointer;
+  margin: 10px 20px 0 10px;
 }
 </style>

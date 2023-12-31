@@ -22,4 +22,8 @@
   all: unset;
   width: 270px;
 }
+
+i {
+  cursor: pointer;
+}
 </style>
