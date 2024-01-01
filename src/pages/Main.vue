@@ -8,7 +8,10 @@
   <div class="search-wrapper">
     <Search />
   </div>
-  <PostList/>
+  <PostList />
+  <div class="footer-wrapper">
+    <Footer />
+  </div>
 </template>
 
 <script setup>
@@ -18,6 +21,7 @@ import Search from '@/components/Search.vue';
 import SmallText from '@/components/SmallText.vue';
 import Sorts from "@/constants/sorts"
 import PostList from "@/components/PostList.vue"
+import Footer from '@/components/Footer.vue';
 import { ref } from 'vue';
 
 const categories = ref(Categories);
@@ -51,5 +55,13 @@ const sorts = ref(Sorts);
   gap: 10px;
   cursor: pointer;
   margin: 10px 20px 0 10px;
+}
+
+.footer-wrapper {
+  position: fixed;
+  bottom: 0;
+  width: 700px;
+  z-index: 1;
+  border-top: 0.5px solid darkgray;
 }
 </style>
