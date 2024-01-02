@@ -1,6 +1,6 @@
 <template>
   <footer>
-    <div class="footer-nav" v-for="(nav, index) in navList" :key="index">
+    <div class="footer-nav" v-for="(nav, index) in navList" :key="index" @click="footerNavClickHandler(nav.modalContent)">
       <img :src="require(`@/assets/images/${nav.image}`)" alt="메뉴 사진" class="footer-nav-image">
       <p>{{ nav.text }}</p>
     </div>
@@ -11,6 +11,13 @@
 import navlist from '@/constants/navlist';
 import { ref } from 'vue';
 const navList = ref(navlist)
+
+
+import { useModalStore } from '@/stores/modal';
+const modalStore = useModalStore();
+const footerNavClickHandler = (modalContent) => {
+  modalStore.open(modalContent);
+}
 </script>
 
 <style scoped>

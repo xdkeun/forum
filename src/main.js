@@ -1,8 +1,9 @@
+import { createPinia } from "pinia";
 import { createApp } from "vue";
 import App from "./App.vue";
 import { createRouter, createWebHistory } from "vue-router";
 import "@/styles/reset.css";
-import '@fortawesome/fontawesome-free/css/all.css';
+import "@fortawesome/fontawesome-free/css/all.css";
 
 import Main from "@/pages/Main.vue";
 import Login from "@/pages/Login.vue";
@@ -17,4 +18,4 @@ const router = createRouter({
   ],
 });
 
-createApp(App).use(router).mount("#app");
+createApp(App).use(createPinia()).use(router).mount("#app");

@@ -1,12 +1,22 @@
 <template>
+  <ul class="post-wrapper">
+    <li class="text category">카테고리</li>
+    <li class="text title">제목<span class="text comment">[댓글]</span></li>
+    <li class="text author">작성자</li>
+    <li class="text date">날짜</li>
+    <li class="text tabom">따봉</li>
+    <li class="text bookmark-header">북마크</li>
+  </ul>
+
   <ul class="post-wrapper" v-for="(post, index) in postList" :key="index">
     <li class="text category">{{ post.category }}</li>
     <li class="text title">{{ post.title }}<span class="text comment">[5]</span></li>
     <li class="text author">{{ post.author }}</li>
     <li class="text date">{{ post.date }}</li>
     <li class="text tabom">{{ post.tabom }}</li>
-    <i class="fa-solid fa-star text scrap yellow"></i>
+    <i class="fa-solid fa-star text bookmark yellow"></i>
   </ul>
+
 </template>
 
 <script setup>
@@ -46,8 +56,12 @@ const postList = ref(postlist);
   width: 30px;
 }
 
-.scrap {
-  width: 20px;
+.bookmark-header {
+  width: 50px;
+}
+
+.bookmark {
+  width: 50px;
   color: darkgray;
 }
 

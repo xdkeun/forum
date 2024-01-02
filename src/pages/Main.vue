@@ -12,6 +12,7 @@
   <div class="footer-wrapper">
     <Footer />
   </div>
+  {{ modal.modalContent }} {{ modal.showModal }}
 </template>
 
 <script setup>
@@ -22,10 +23,16 @@ import SmallText from '@/components/SmallText.vue';
 import Sorts from "@/constants/sorts"
 import PostList from "@/components/PostList.vue"
 import Footer from '@/components/Footer.vue';
-import { ref } from 'vue';
+import { ref, toRef } from 'vue';
 
 const categories = ref(Categories);
 const sorts = ref(Sorts);
+
+
+
+import { useModalStore } from '@/stores/modal';
+const modalStore = useModalStore();
+const modal = toRef(modalStore);
 
 </script>
 
@@ -44,7 +51,7 @@ const sorts = ref(Sorts);
 }
 
 .search-wrapper {
-  margin: 5px 10px;
+  margin: 5px;
   display: flex;
   justify-content: flex-end;
 }
