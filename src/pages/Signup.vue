@@ -1,17 +1,25 @@
 <template>
   <div class="signup">
     <img src="@/assets/images/logo.png" alt="포럼 로고" class="logo">
-    <BigText :text="'회원가입'"/>
-    <Input :type="'text'" :icon="'fa-solid fa-user'" :placeholder="'아이디'" />
-    <Input :type="'password'" :icon="'fa-solid fa-lock'" :placeholder="'비밀번호'" />
-    <Input :type="'text'" :icon="'fa-solid fa-user'" :placeholder="'닉네임'" />
-    <Button :text="'회원가입'" />
+    <BigText :text="'회원가입'" />
+    <Input :type="'text'" :icon="'fa-solid fa-user'" :placeholder="'아이디'" @input-change="idChangeHandler" />
+    <Input :type="'password'" :icon="'fa-solid fa-lock'" :placeholder="'비밀번호'" @input-change="passwordChangeHandler" />
+    <Input :type="'text'" :icon="'fa-solid fa-user'" :placeholder="'닉네임'" @input-change="nicknameChangeHandler" />
+    <Button :text="'회원가입'" @click="signupClickHandler" />
   </div>
 </template>
 <script setup>
+import { ref } from "vue";
 import BigText from "@/components/BigText.vue";
 import Input from "@/components/Input.vue"
 import Button from "@/components/Button.vue"
+const id = ref("")
+const password = ref("")
+const nickname = ref("")
+const idChangeHandler = (inputValue) => id.value = inputValue
+const passwordChangeHandler = (inputValue) => password.value = inputValue
+const nicknameChangeHandler = (inputValue) => nickname.value = inputValue
+const signupClickHandler = () => console.log(id.value, password.value, nickname.value)
 </script>
 
 <style scoped>

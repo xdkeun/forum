@@ -47,14 +47,15 @@ const modalCloseHandler = () => {
   background: rgba(0, 0, 0, 0.5);
   display: flex;
   justify-content: center;
-  padding-top:5%;
 }
 
 .modal-content {
   background: white;
-  width: 400px;
-  height: 70%;
+  width: 500px;
   position: relative;
+  border-radius: 5px;
+  margin-top: 10px;
+  margin-bottom: 100px;
 }
 
 .modal-close {

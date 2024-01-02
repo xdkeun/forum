@@ -2,19 +2,25 @@
   <div class="login">
     <img src="@/assets/images/logo.png" alt="포럼 로고" class="logo">
     <BigText :text="'로그인'"/>
-    <Input :type="'text'" :icon="'fa-solid fa-user'" :placeholder="'아이디'" />
-    <Input :type="'password'" :icon="'fa-solid fa-lock'" :placeholder="'비밀번호'" />
-    <Button :text="'로그인'" />
+    <Input :type="'text'" :icon="'fa-solid fa-user'" :placeholder="'아이디'" @input-change="idChangeHandler"/>
+    <Input :type="'password'" :icon="'fa-solid fa-lock'" :placeholder="'비밀번호'" @input-change="passwordChangeHandler"/>
+    <Button :text="'로그인'" @click="loginClickHandler"/>
     <router-link to="/signup">
       <SmallText :text="'회원가입을 하시겠습니까?'" />
     </router-link>
   </div>
 </template>
 <script setup>
+import { ref } from "vue";
 import BigText from "@/components/BigText.vue";
 import Input from "@/components/Input.vue"
 import Button from "@/components/Button.vue"
 import SmallText from "@/components/SmallText.vue"
+const id = ref("")
+const password = ref("")
+const idChangeHandler = (inputValue) => id.value = inputValue
+const passwordChangeHandler = (inputValue) => password.value = inputValue
+const loginClickHandler = () => console.log(id.value, password.value)
 </script>
 
 <style scoped>
