@@ -16,7 +16,8 @@ const navList = ref(navlist)
 import { useModalStore } from '@/stores/modal';
 const modalStore = useModalStore();
 const footerNavClickHandler = (modalContent) => {
-  modalStore.open(modalContent);
+  if (modalContent) modalStore.open(modalContent);
+  else modalStore.close();
 }
 </script>
 

@@ -8,10 +8,8 @@ export const useModalStore = defineStore({
   }),
   actions: {
     open(modalContent) {
-      if (modalContent) {
-        this.showModal = true;
-        this.modalContent = modalContent;
-      }
+      this.showModal = true;
+      this.modalContent = modalContent;
     },
     close() {
       this.showModal = false;

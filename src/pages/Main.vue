@@ -12,7 +12,7 @@
   <div class="footer-wrapper">
     <Footer />
   </div>
-  {{ modal.modalContent }} {{ modal.showModal }}
+  <Modal v-if="modal.showModal" :modalContent="modal.modalContent" />
 </template>
 
 <script setup>
@@ -23,6 +23,7 @@ import SmallText from '@/components/SmallText.vue';
 import Sorts from "@/constants/sorts"
 import PostList from "@/components/PostList.vue"
 import Footer from '@/components/Footer.vue';
+import Modal from "@/components/Modal.vue"
 import { ref, toRef } from 'vue';
 
 const categories = ref(Categories);
