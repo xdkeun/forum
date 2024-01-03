@@ -1,5 +1,6 @@
 <template>
   <div class="bookmark-layout">
+    <BigText text="북마크" />
     <ul class="post-wrapper">
       <li class="text title">제목</li>
       <li class="text bookmark-header">북마크</li>
@@ -13,6 +14,7 @@
 
 <script setup>
 import { ref } from "vue";
+import BigText from "./BigText.vue";
 import postlist from "@/constants/postlist"
 const postList = ref(postlist);
 </script>
