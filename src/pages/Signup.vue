@@ -5,6 +5,7 @@
     <Input :type="'text'" :icon="'fa-solid fa-user'" :placeholder="'아이디'" @input-change="idChangeHandler" />
     <Input :type="'password'" :icon="'fa-solid fa-lock'" :placeholder="'비밀번호'" @input-change="passwordChangeHandler" />
     <Input :type="'text'" :icon="'fa-solid fa-user'" :placeholder="'닉네임'" @input-change="nicknameChangeHandler" />
+    <FailText text="아이디는 4자 이상입니다."/>
     <Button :text="'회원가입'" @click="signupClickHandler" />
   </div>
 </template>
@@ -13,6 +14,7 @@ import { ref } from "vue";
 import BigText from "@/components/BigText.vue";
 import Input from "@/components/Input.vue"
 import Button from "@/components/Button.vue"
+import FailText from "@/components/FailText.vue";
 import * as userService from "@/services/userService"
 const id = ref("")
 const password = ref("")
