@@ -1,0 +1,10 @@
+{
+  "users": [
+    {
+      "id":"admin",
+      "password": "admin",
+      "name":"관리자",
+      "profileImage":null
+    }
+  ]
+}
