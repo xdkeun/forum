@@ -13,13 +13,17 @@ import { ref } from "vue";
 import BigText from "@/components/BigText.vue";
 import Input from "@/components/Input.vue"
 import Button from "@/components/Button.vue"
+import * as userService from "@/services/userService"
 const id = ref("")
 const password = ref("")
 const nickname = ref("")
 const idChangeHandler = (inputValue) => id.value = inputValue
 const passwordChangeHandler = (inputValue) => password.value = inputValue
 const nicknameChangeHandler = (inputValue) => nickname.value = inputValue
-const signupClickHandler = () => console.log(id.value, password.value, nickname.value)
+const signupClickHandler = () => {
+  console.log(id.value, password.value, nickname.value)
+  userService.signup(id.value, password.value, nickname.value)
+  }
 </script>
 
 <style scoped>
