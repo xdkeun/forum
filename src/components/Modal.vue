@@ -52,6 +52,7 @@ const modalCloseHandler = () => {
 .modal-content {
   background: white;
   width: 500px;
+  min-height: 500px;
   position: relative;
   border-radius: 5px;
   margin-top: 10px;
