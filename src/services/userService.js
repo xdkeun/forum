@@ -1,9 +1,29 @@
-// const SERVER = 'https://localhost:4000';
 import * as userValidation from "@/validations/userValidation";
+import axios from "axios";
+const SERVER = "http://localhost:4000";
+const headers = {
+  "Content-Type": "application/json",
+};
 
-// 회원가입 서비스
-export function signup(id, password, nickname) {
-  if (!userValidation.validateId(id)) alert("ID FUCK");
-  if (!userValidation.validatePassword(password)) alert("PASSWORD FUCK");
-  if (!userValidation.validateNickname(nickname)) alert("NICKNAME FUCK");
-}
+// 회원가입
+export const signup = async (userId, password, nickname) => {
+  if (!userValidation.validateUserId(userId)) {
+    throw new Error("validateUserIdError");
+  }
+  if (!userValidation.validatePassword(password)) {
+    throw new Error("validatePasswordError");
+  }
+  if (!userValidation.validateNickname(nickname)) {
+    throw new Error("validateNicknameError");
+  }
+  await axios.post(
+    `${SERVER}/users`,
+    {
+      userId,
+      password,
+      nickname,
+      profileImage: null,
+    },
+    headers
+  );
+};
