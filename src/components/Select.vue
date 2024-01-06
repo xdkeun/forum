@@ -3,18 +3,20 @@
     <div class="icon-wrapper">
       <i :class="props.icon"></i>
     </div>
-    <select class="select" v-model="selectValue" @change="selectChangeHandler">
-      <option v-for="(select, index) in props.selects" :key="index" :value="select">{{ select }}</option>
+    <select class="select" v-model="selectedCategory" @change="selectChangeHandler">
+      <option v-for="(select, index) in props.categories" :key="index" :value="select">{{ select }}</option>
     </select>
   </div>
 </template>
 
 <script setup>
-import { ref, defineEmits, defineProps } from 'vue';
-const props = defineProps(['icon', 'selects']);
-const selectValue = ref("");
-const emit = defineEmits(['select-change'])
-const selectChangeHandler = () => emit('select-change', selectValue.value);
+import { defineProps, defineEmits, ref } from 'vue';
+const props = defineProps(['icon', 'categories']);
+const selectedCategory = ref(props.categories[0]);
+const emit = defineEmits(['update:modelValue']);
+const selectChangeHandler = (event) => {
+  emit('update:modelValue', event.target.value);
+};
 </script>
 
 <style scoped>
