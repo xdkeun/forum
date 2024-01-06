@@ -2,9 +2,9 @@
   <div class="signup">
     <img src="@/assets/images/logo.png" alt="포럼 로고" class="logo">
     <BigText :text="'회원가입'" />
-    <Input :type="'text'" :icon="'fa-solid fa-user'" :placeholder="'아이디'" @input-change="userIdChangeHandler" />
-    <Input :type="'password'" :icon="'fa-solid fa-lock'" :placeholder="'비밀번호'" @input-change="passwordChangeHandler" />
-    <Input :type="'text'" :icon="'fa-solid fa-user'" :placeholder="'닉네임'" @input-change="nicknameChangeHandler" />
+    <Input :type="'text'" :icon="'fa-solid fa-user'" :placeholder="'아이디'" v-model="userId" />
+    <Input :type="'password'" :icon="'fa-solid fa-lock'" :placeholder="'비밀번호'" v-model="password" />
+    <Input :type="'text'" :icon="'fa-solid fa-user'" :placeholder="'닉네임'" v-model="nickname" />
     <FailText :text="failText" v-if="failText" />
     <Button :text="'회원가입'" @click="signupClickHandler" />
   </div>
@@ -24,10 +24,6 @@ const userId = ref("");
 const password = ref("");
 const nickname = ref("");
 const failText = ref("");
-
-const userIdChangeHandler = (inputValue) => userId.value = inputValue;
-const passwordChangeHandler = (inputValue) => password.value = inputValue;
-const nicknameChangeHandler = (inputValue) => nickname.value = inputValue;
 const signupClickHandler = async () => {
   try {
     await userService.signup(userId.value, password.value, nickname.value);

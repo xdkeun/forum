@@ -1,15 +1,15 @@
 <template>
   <div class="search-wrapper">
-    <input type="text" placeholder="검색" class="input" v-model="inputValue" @change="inputChangeHandler">
+    <input type="text" placeholder="검색" class="input" :value="props.modelValue" @input="inputChangeHandler">
     <i class="fa-solid fa-magnifying-glass"></i>
   </div>
 </template>
 
 <script setup>
-import { ref, defineEmits } from 'vue';
-const inputValue = ref("");
-const emit = defineEmits(['input-change'])
-const inputChangeHandler = () => emit('input-change', inputValue.value);
+import { defineProps, defineEmits } from 'vue';
+const props = defineProps(['modelValue'])
+const emit = defineEmits(['update:modelValue'])
+const inputChangeHandler = (event) => emit('update:modelValue', event.target.value);
 </script>
 
 <style scoped>

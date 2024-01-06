@@ -2,8 +2,8 @@
   <div class="login">
     <img src="@/assets/images/logo.png" alt="포럼 로고" class="logo">
     <BigText :text="'로그인'" />
-    <Input :type="'text'" :icon="'fa-solid fa-user'" :placeholder="'아이디'" @input-change="userIdChangeHandler" />
-    <Input :type="'password'" :icon="'fa-solid fa-lock'" :placeholder="'비밀번호'" @input-change="passwordChangeHandler" />
+    <Input :type="'text'" :icon="'fa-solid fa-user'" :placeholder="'아이디'" v-model="userId" />
+    <Input :type="'password'" :icon="'fa-solid fa-lock'" :placeholder="'비밀번호'" v-model="password" />
     <FailText :text="failText" v-if="failText" />
     <Button :text="'로그인'" @click="loginClickHandler" />
     <router-link to="/signup">
@@ -25,9 +25,6 @@ const router = useRouter();
 const userId = ref("")
 const password = ref("")
 const failText = ref("")
-
-const userIdChangeHandler = (inputValue) => userId.value = inputValue
-const passwordChangeHandler = (inputValue) => password.value = inputValue
 const loginClickHandler = async () => {
   try {
     await userService.login(userId.value, password.value);

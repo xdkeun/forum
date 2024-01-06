@@ -6,7 +6,7 @@
     <SmallText v-for="(sort, index) in sorts" :key="index" :text="sort" class="sort" />
   </div>
   <div class="search-wrapper">
-    <Search @input-change="searchChangeHandler" />
+    <Search v-model="search" />
   </div>
   <PostList />
   <div class="footer-wrapper">
@@ -29,7 +29,6 @@ import { ref, toRef } from 'vue';
 const categories = ref(Categories);
 const sorts = ref(Sorts);
 const search = ref("");
-const searchChangeHandler = (inputValue) => search.value = inputValue
 
 import { useModalStore } from '@/stores/modal';
 const modalStore = useModalStore();

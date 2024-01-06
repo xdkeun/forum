@@ -1,17 +1,16 @@
 <template>
   <div class="input-wrapper">
     <i :class="props.icon"></i>
-    <input :type="props.type" :placeholder="props.placeholder" class="input" v-model="inputValue" @change="inputChangeHandler" />
+    <input :type="props.type" :placeholder="props.placeholder" class="input" :value="props.modelValue"
+      @input="inputChangeHandler" />
   </div>
 </template>
 
 <script setup>
-import { ref, defineProps, defineEmits } from 'vue';
-const props = defineProps(['type', 'icon', 'placeholder']);
-
-const inputValue = ref("");
-const emit = defineEmits(['input-change'])
-const inputChangeHandler = () => emit('input-change', inputValue.value);
+import { defineProps, defineEmits } from 'vue';
+const props = defineProps(['type', 'icon', 'placeholder', 'modelValue']);
+const emit = defineEmits(['update:modelValue']);
+const inputChangeHandler = (event) => emit('update:modelValue', event.target.value);
 </script>
 
 <style scoped>
