@@ -1,12 +1,38 @@
 <template>
   <header class="header">
     <router-link to="/"><img src="@/assets/images/logo.png" alt="포럼 로고" class="logo"></router-link>
-    <router-link to="/login" class="profile">
+    <div class="profile" @click="profileClickHandler">
       <img src="@/assets/images/user.png" alt="프로필 사진" class="profile-image">
-      <p>로그인</p>
-    </router-link>
+      <p> {{ nickname || "로그인" }}</p>
+    </div>
   </header>
 </template>
+
+<script setup>
+import { ref, onBeforeMount } from 'vue';
+import { useRouter } from 'vue-router';
+import * as userService from "@/services/userService";
+
+const router = useRouter();
+const nickname = ref("");
+
+onBeforeMount(async () => {
+  if (localStorage.getItem("forumLoginId")) {
+    const user = await userService.getUser(localStorage.getItem("forumLoginId"));
+    nickname.value = user.nickname;
+  }
+});
+
+const profileClickHandler = () => {
+  if (localStorage.getItem("forumLoginId")) {
+    localStorage.removeItem("forumLoginId");
+    nickname.value = "";
+    alert("로그아웃에 성공했습니다.");
+  } else {
+    router.push("/login");
+  }
+}
+</script>
 
 <style scoped>
 .header {
