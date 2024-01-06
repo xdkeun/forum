@@ -29,7 +29,6 @@ const loginClickHandler = async () => {
   try {
     await userService.login(userId.value, password.value);
     alert("로그인에 성공했습니다.")
-    localStorage.setItem("forumLoginUserId", userId.value)
     router.push('/');
   } catch (error) {
     if (error.message === "loginError") {

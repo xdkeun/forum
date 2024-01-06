@@ -1,11 +1,10 @@
 {
   "users": [
     {
-      "id": 1,
       "userId": "admin",
       "password": "admin",
       "nickname": "관리자",
-      "profileImage": ""
+      "id": 1
     }
   ]
 }
