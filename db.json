@@ -5,6 +5,26 @@
       "password": "admin",
       "nickname": "관리자",
       "id": 1
+    },
+    {
+      "userId": "newid",
+      "password": "newid1",
+      "nickname": "newid",
+      "id": 2
+    }
+  ],
+  "posts": [
+    {
+      "category": "전체",
+      "title": "글의 제목입니다",
+      "content": "글의 내용입니다",
+      "id": 1
+    },
+    {
+      "category": "전체",
+      "title": "123412",
+      "content": "123412",
+      "id": 2
     }
   ]
 }
