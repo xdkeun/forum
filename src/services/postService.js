@@ -13,8 +13,8 @@ export const getPosts = async () => {
 
 // 특정 글 정보 불러오기
 export const getPost = async (id) => {
-  const posts = await axios.get(`${SERVER}/posts`);
-  const matchedPost = posts.data.find((post) => post.id == id);
+  const posts = await getPosts();
+  const matchedPost = posts.find((post) => post.id == id);
   return matchedPost;
 };
 
@@ -35,8 +35,21 @@ export const write = async (category, title, content) => {
       category,
       title,
       content,
+      tabom: 0,
       date: new Date(),
       userId: localStorage.getItem("forumLoginId"),
+    },
+    headers
+  );
+};
+
+// 따봉 누르기
+export const tabom = async (id) => {
+  const matchedPost = await getPost(id);
+  await axios.patch(
+    `${SERVER}/posts/${id}`,
+    {
+      tabom: parseInt(matchedPost.tabom) + 1,
     },
     headers
   );

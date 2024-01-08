@@ -7,7 +7,7 @@
     <li class="text tabom">따봉</li>
     <li class="text bookmark-header">북마크</li>
   </ul>
-  <ul class="post-wrapper" v-for="(post, index) in posts" :key="index" @click="postClickHandler(post.id)">
+  <ul class="post-wrapper posts" v-for="(post, index) in posts" :key="index" @click="postClickHandler(post.id)">
     <li class="text category">{{ post.category }}</li>
     <li class="text title">{{ post.title }}<span class="text comment">[5]</span></li>
     <li class="text nickname">{{ users[index] ? users[index].nickname : '알 수 없음' }}</li>
@@ -51,6 +51,10 @@ const postClickHandler = (id) => {
   height: 30px;
   gap: 5px;
   border-bottom: 0.5px solid darkgray;
+}
+
+.posts:hover {
+  background: rgba(0, 0, 0, 0.05);
   cursor: pointer;
 }
 

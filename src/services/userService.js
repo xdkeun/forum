@@ -13,8 +13,8 @@ export const getUsers = async () => {
 
 // 특정 유저 정보 불러오기
 export const getUser = async (id) => {
-  const users = await axios.get(`${SERVER}/users`);
-  const matchedUser = users.data.find((user) => user.id == id);
+  const users = await getUsers();
+  const matchedUser = users.find((user) => user.id == id);
   return matchedUser;
 };
 
@@ -47,9 +47,10 @@ export const login = async (userId, password) => {
     (user) => user.userId === userId && user.password === password
   );
   if (!matchedUser) throw new Error("loginError");
-  localStorage.setItem("forumLoginId", matchedUser.id)
+  localStorage.setItem("forumLoginId", matchedUser.id);
 };
 
+// 회원정보 수정
 export const updateUser = async (id, userId, password, nickname) => {
   if (!userValidation.validateUserId(userId)) {
     throw new Error("validateUserIdError");

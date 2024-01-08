@@ -9,20 +9,25 @@
       <SmallText :text="formatDate(post.date)" />
     </div>
     <p class="content">{{ post.content }}</p>
+    <div class="flex-layout">
+      <div class="tabom-layout" @click="tabomClickHandler(post.id)">
+        <i class="fa-solid fa-thumbs-up"></i>
+        <span class="tabom-count">{{ post.tabom }}</span>
+      </div>
+    </div>
     <BigText :text="'댓글'" />
     <div class="flex-layout">
       <Input :type="'text'" :icon="'fa-solid fa-comment'" :placeholder="'댓글을 작성하세요'" v-model="comment" />
       <Button :text="'댓글 작성'" @click="commentWriteHandler" />
     </div>
     <FailText :text="failText" v-if="failText" />
-    <ul class="comment-layout" v-for="(comment, index) in comments" :key="index">
-
+    <article class="comment-layout" v-for="(comment, index) in comments" :key="index">
       <p class="comment">{{ comment.comment }}</p>
       <div class="flex-layout">
         <SmallText :text="commentsUsers[index] ? commentsUsers[index].nickname : '알 수 없음'" />
         <SmallText :text="formatDate(comment.date)" />
       </div>
-    </ul>
+    </article>
   </div>
 </template>
 
@@ -70,6 +75,11 @@ const commentWriteHandler = async () => {
     }
   }
 };
+
+const tabomClickHandler = async () => {
+  await postService.tabom(post.value.id, 1);
+  alert("따봉이 클릭되었습니다.")
+};
 </script>
 
 <style scoped>
@@ -93,6 +103,21 @@ const commentWriteHandler = async () => {
   overflow-y: auto;
   white-space: pre-wrap;
   word-wrap: break-word;
+}
+
+.tabom-layout {
+  border: 1px solid darkgray;
+  border-radius: 5px;
+  padding: 5px;
+  cursor: pointer;
+}
+
+.tabom-layout:hover {
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.tabom-count {
+  margin-left: 5px;
 }
 
 .comment-layout {
