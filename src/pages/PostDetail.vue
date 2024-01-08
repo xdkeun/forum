@@ -10,11 +10,19 @@
     </div>
     <p class="content">{{ post.content }}</p>
     <BigText :text="'댓글'" />
-    <div class="comment-layout">
+    <div class="flex-layout">
       <Input :type="'text'" :icon="'fa-solid fa-comment'" :placeholder="'댓글을 작성하세요'" v-model="comment" />
       <Button :text="'댓글 작성'" @click="commentWriteHandler" />
     </div>
     <FailText :text="failText" v-if="failText" />
+    <ul class="comment-layout" v-for="(comment, index) in comments" :key="index">
+
+      <p class="comment">{{ comment.comment }}</p>
+      <div class="flex-layout">
+        <SmallText :text="commentsUsers[index] ? commentsUsers[index].nickname : '알 수 없음'" />
+        <SmallText :text="formatDate(comment.date)" />
+      </div>
+    </ul>
   </div>
 </template>
 
@@ -23,22 +31,29 @@ import { ref, onMounted } from 'vue';
 import { useRoute } from 'vue-router';
 import * as postService from "@/services/postService"
 import * as userService from "@/services/userService"
+import * as commentService from "@/services/commentService"
 import { formatDate } from "@/utils/helpers";
 import BigText from '@/components/BigText.vue';
 import SmallText from '@/components/SmallText.vue';
 import Input from '@/components/Input.vue';
 import Button from '@/components/Button.vue';
 import FailText from '@/components/FailText.vue';
-import * as commentService from "@/services/commentService"
 
 const route = useRoute();
 const post = ref("")
 const user = ref("")
 const comment = ref("")
+const comments = ref([])
+const commentsUsers = ref([])
 const failText = ref("")
 onMounted(async () => {
   post.value = await postService.getPost(route.params.postId);
   user.value = await userService.getUser(post.value.userId);
+  comments.value = await commentService.getComment(post.value.id)
+  for (const comment of comments.value) {
+    const user = await userService.getUser(comment.userId);
+    commentsUsers.value.push(user);
+  }
 }
 );
 
@@ -81,7 +96,11 @@ const commentWriteHandler = async () => {
 }
 
 .comment-layout {
-  display: flex;
-  gap: 5px;
+  padding: 5px 0;
+  border-bottom: 0.5px solid darkgray;
+}
+
+.comment {
+  font-size: 18px;
 }
 </style>

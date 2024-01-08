@@ -5,6 +5,15 @@ const headers = {
   "Content-Type": "application/json",
 };
 
+// 특정 댓글 정보 불러오기
+export const getComment = async (postId) => {
+  const comments = await axios.get(`${SERVER}/comments`);
+  const matchedComment = comments.data.filter(
+    (comment) => comment.postId == postId
+  );
+  return matchedComment;
+};
+
 // 댓글 작성
 export const write = async (comment, postId) => {
   if (!commentValidation.validateComment(comment)) {

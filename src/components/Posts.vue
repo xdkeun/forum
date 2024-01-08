@@ -2,7 +2,7 @@
   <ul class="post-wrapper">
     <li class="text category">카테고리</li>
     <li class="text title">제목<span class="text comment">[댓글]</span></li>
-    <li class="text author">작성자</li>
+    <li class="text nickname">작성자</li>
     <li class="text date">날짜</li>
     <li class="text tabom">따봉</li>
     <li class="text bookmark-header">북마크</li>
@@ -10,7 +10,7 @@
   <ul class="post-wrapper" v-for="(post, index) in posts" :key="index" @click="postClickHandler(post.id)">
     <li class="text category">{{ post.category }}</li>
     <li class="text title">{{ post.title }}<span class="text comment">[5]</span></li>
-    <li class="text author">{{ users[index] ? users[index].nickname : '알 수 없음' }}</li>
+    <li class="text nickname">{{ users[index] ? users[index].nickname : '알 수 없음' }}</li>
     <li class="text date">{{ formatDate(post.date) }}</li>
     <li class="text tabom">{{ post.tabom }}</li>
     <i class="fa-solid fa-star text bookmark yellow"></i>
@@ -62,7 +62,7 @@ const postClickHandler = (id) => {
   width: 250px;
 }
 
-.author {
+.nickname {
   width: 100px;
 }
 
