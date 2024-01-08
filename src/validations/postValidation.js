@@ -1,6 +1,6 @@
 // 카테고리 유효성 검사, 빈 값은 안됨
 export function validateCategory(category) {
-  return category.length !== "";
+  return category.length !== 0;
 }
 
 // 글 제목 유효성 검사, 2글자 이상

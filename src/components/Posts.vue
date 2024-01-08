@@ -51,6 +51,7 @@ const postClickHandler = (id) => {
   height: 30px;
   gap: 5px;
   border-bottom: 0.5px solid darkgray;
+  cursor: pointer;
 }
 
 .category {
