@@ -1,30 +1,44 @@
 {
   "users": [
     {
-      "userId": "admin",
-      "password": "admin",
-      "nickname": "관리자",
+      "userId": "user",
+      "password": "user",
+      "nickname": "코끼리",
       "id": 1
-    },
-    {
-      "userId": "newid",
-      "password": "newid1",
-      "nickname": "newid",
-      "id": 2
     }
   ],
   "posts": [
     {
-      "category": "전체",
-      "title": "글의 제목입니다",
-      "content": "글의 내용입니다",
+      "category": "카테고리1",
+      "title": "글의 제목",
+      "content": "글의 내용",
+      "date": "1",
+      "userId": 1,
       "id": 1
-    },
+    }
+  ],
+  "taboms": [
     {
-      "category": "전체",
-      "title": "123412",
-      "content": "123412",
-      "id": 2
+      "count": 1,
+      "postId": 1,
+      "userId": 1,
+      "id": 1
+    }
+  ],
+  "bookmarks": [
+    {
+      "postId": 1,
+      "userId": 1,
+      "id": 1
+    }
+  ],
+  "comments": [
+    {
+      "content": "댓글의 내용",
+      "date": "1",
+      "postId": 1,
+      "userId": 1,
+      "id": 1
     }
   ]
 }

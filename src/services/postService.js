@@ -5,9 +5,14 @@ const headers = {
   "Content-Type": "application/json",
 };
 
+// 글 정보 불러오기
+export const getPosts = async () => {
+  const posts = await axios.get(`${SERVER}/posts`);
+  return posts.data;
+};
+
 // 글 작성
 export const write = async (category, title, content) => {
-  console.log(category, title,content)
   if (!postValidation.validateCategory(category)) {
     throw new Error("validateCategoryError");
   }
@@ -23,6 +28,7 @@ export const write = async (category, title, content) => {
       category,
       title,
       content,
+      authorId: localStorage.getItem("forumLoginId"),
     },
     headers
   );

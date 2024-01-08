@@ -8,7 +8,7 @@
     <li class="text bookmark-header">북마크</li>
   </ul>
 
-  <ul class="post-wrapper" v-for="(post, index) in postList" :key="index">
+  <ul class="post-wrapper" v-for="(post, index) in posts" :key="index">
     <li class="text category">{{ post.category }}</li>
     <li class="text title">{{ post.title }}<span class="text comment">[5]</span></li>
     <li class="text author">{{ post.author }}</li>
@@ -16,13 +16,16 @@
     <li class="text tabom">{{ post.tabom }}</li>
     <i class="fa-solid fa-star text bookmark yellow"></i>
   </ul>
-
 </template>
 
 <script setup>
-import { ref } from "vue";
-import postlist from "@/constants/postlist"
-const postList = ref(postlist);
+import { ref, onMounted } from "vue";
+import * as postService from "@/services/postService"
+const posts = ref("")
+onMounted(async () => {
+  const response = await postService.getPosts();
+  posts.value = response;
+});
 </script>
 
 

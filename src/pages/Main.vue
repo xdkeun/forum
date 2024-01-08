@@ -8,7 +8,7 @@
   <div class="search-wrapper">
     <Search v-model="search" />
   </div>
-  <PostList />
+  <Posts />
   <div class="footer-wrapper">
     <Footer />
   </div>
@@ -21,7 +21,7 @@ import Categories from '@/constants/categories'
 import Search from '@/components/Search.vue';
 import SmallText from '@/components/SmallText.vue';
 import Sorts from "@/constants/sorts"
-import PostList from "@/components/PostList.vue"
+import Posts from "@/components/Posts.vue"
 import Footer from '@/components/Footer.vue';
 import Modal from "@/components/Modal.vue"
 import { ref, toRef } from 'vue';
