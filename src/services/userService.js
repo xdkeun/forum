@@ -1,6 +1,6 @@
 import * as userValidation from "@/validations/userValidation";
 import axios from "axios";
-const SERVER = "http://localhost:4001";
+const SERVER = "http://localhost:4000";
 const headers = {
   "Content-Type": "application/json",
 };

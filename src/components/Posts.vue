@@ -7,12 +7,11 @@
     <li class="text tabom">따봉</li>
     <li class="text bookmark-header">북마크</li>
   </ul>
-
-  <ul class="post-wrapper" v-for="(post, index) in posts" :key="index">
+  <ul class="post-wrapper" v-for="(post, index) in posts" :key="index" @click="postClickHandler(post.id)">
     <li class="text category">{{ post.category }}</li>
     <li class="text title">{{ post.title }}<span class="text comment">[5]</span></li>
-    <li class="text author">{{ post.author }}</li>
-    <li class="text date">{{ post.date }}</li>
+    <li class="text author">{{ users[index] ? users[index].nickname : '알 수 없음' }}</li>
+    <li class="text date">{{ formatDate(post.date) }}</li>
     <li class="text tabom">{{ post.tabom }}</li>
     <i class="fa-solid fa-star text bookmark yellow"></i>
   </ul>
@@ -20,12 +19,27 @@
 
 <script setup>
 import { ref, onMounted } from "vue";
+import { useRouter } from 'vue-router';
 import * as postService from "@/services/postService"
-const posts = ref("")
+import * as userService from "@/services/userService"
+import { formatDate } from "@/utils/helpers";
+
+const posts = ref([]);
+const users = ref([]);
+
 onMounted(async () => {
   const response = await postService.getPosts();
   posts.value = response;
+  for (const post of posts.value) {
+    const user = await userService.getUser(post.userId);
+    users.value.push(user);
+  }
 });
+
+const router = useRouter();
+const postClickHandler = (id) => {
+  router.push({ name: 'PostDetail', params: { postId: id } });
+}
 </script>
 
 

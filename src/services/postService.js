@@ -1,6 +1,6 @@
 import * as postValidation from "@/validations/postValidation";
 import axios from "axios";
-const SERVER = "http://localhost:4001";
+const SERVER = "http://localhost:4000";
 const headers = {
   "Content-Type": "application/json",
 };
@@ -9,6 +9,13 @@ const headers = {
 export const getPosts = async () => {
   const posts = await axios.get(`${SERVER}/posts`);
   return posts.data;
+};
+
+// 특정 글 정보 불러오기
+export const getPost = async (id) => {
+  const posts = await axios.get(`${SERVER}/posts`);
+  const matchedPost = posts.data.find((post) => post.id == id);
+  return matchedPost;
 };
 
 // 글 작성
@@ -28,7 +35,8 @@ export const write = async (category, title, content) => {
       category,
       title,
       content,
-      authorId: localStorage.getItem("forumLoginId"),
+      date: new Date(),
+      userId: localStorage.getItem("forumLoginId"),
     },
     headers
   );
